@@ -5,6 +5,45 @@ import './global.css';
 import styles from './App.module.css';
 import { Sidebar } from './components/Sidebar';
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/viniciuspachecof.png',
+      name: 'Vinicius Pacheco',
+      role: 'dev front end',
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      {
+        type: 'paragraph',
+        content:
+          'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
+      },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    publishedAt: new Date('2025-02-24 20:50:00'),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/viniciuspachecof.png',
+      name: 'Tiago Fernandes',
+      role: 'dev back end',
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      {
+        type: 'paragraph',
+        content:
+          'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
+      },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    publishedAt: new Date('2025-02-28 20:55:00'),
+  },
+];
+
 export function App() {
   return (
     <>
@@ -13,15 +52,7 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author="Vinicius Pacheco"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae voluptatem maxime vero perspiciatis consectetur. Sint non sunt consequatur, necessitatibus exercitationem laborum itaque labore commodi possimus libero consectetur esse. Dolores, rem."
-          />
-
-          <Post
-            author="Tiago alegre"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae voluptatem maxime vero perspiciatis consectetur. Sint non sunt consequatur, necessitatibus exercitationem laborum itaque labore commodi possimus libero consectetur esse. Dolores, rem."
-          />
+          {posts.map((record) => <Post key={record.id} author={record.author} content={record.content} publishedAt={record.publishedAt}/>)}
         </main>
       </div>
     </>
